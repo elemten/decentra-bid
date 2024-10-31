@@ -145,7 +145,7 @@ function Page({ params }: { params: { auctionId: string } }) {
                 <div className=" flex flex-col">
                 <h2 className=" text-primary font-bold">Starting Bid</h2>
                 <p className=" font-bold text-2xl">
-                  {toTokens(auction[4], 18)} MATIC
+                  {toTokens(auction[4], 18)} ETH
                 </p>
               </div>
               <div className="flex flex-col">
@@ -181,7 +181,7 @@ function Page({ params }: { params: { auctionId: string } }) {
                   title="Your Bid"
                   label="Your Bid"
                   type="number"
-                  endContent="MATIC"
+                  endContent="ETH"
                   classNames={{
                     mainWrapper: "rounded-r-none",
                     base: "rounded-r-none",
@@ -215,7 +215,7 @@ function Page({ params }: { params: { auctionId: string } }) {
               {topBids?.map((bid, index) => (
                 <div key={index} className=" flex flex-row w-full justify-between items-center">
                 <Snippet color="primary">{String(bid.bidderAddress)}</Snippet>
-                <p className=" text-primary-200">{toTokens(bid.bidAmount,18)} MATIC</p>
+                <p className=" text-primary-200">{toTokens(bid.bidAmount,18)} ETH</p>
               </div>
               ))
               }

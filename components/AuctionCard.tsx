@@ -23,7 +23,7 @@ function AuctionCard({auction,auctionId}:{auction:any,auctionId:number}) {
         </div>
         <div className='flex flex-col gap-2 mb-2'>
         <h2 className='text-primary font-bold' >Starting Bid</h2>
-        <p className=''>{toTokens(auction[4],18)} Matic</p>
+        <p className=''>{toTokens(auction[4],18)} ETH</p>
         </div>
         <Button color='primary' variant='bordered' fullWidth as={Link}  href={`/details/${auctionId}`}>View More</Button>
        
