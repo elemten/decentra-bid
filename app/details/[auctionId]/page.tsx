@@ -7,8 +7,10 @@ import { prepareContractCall, PreparedTransaction, readContract, toTokens, toUni
 import { useActiveAccount, useSendAndConfirmTransaction } from "thirdweb/react";
 import { printCountdown } from "@/utils/countDown";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 function Page({ params }: { params: { auctionId: string } }) {
+  const router=useRouter();
   const activeAccount = useActiveAccount();
   const [isLoading, setIsLoading] = React.useState(true);
   const [auction, setAuction] = React.useState<any>();
@@ -62,7 +64,9 @@ function Page({ params }: { params: { auctionId: string } }) {
         onSuccess(){
           toast.success('Bid Placed Successfully')
           getAuction();
-          getTopBids();
+          getTopBids()
+          router.refresh()
+          ;
         },
         onError(){
           toast.error('Error Placing Bid')

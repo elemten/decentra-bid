@@ -11,10 +11,11 @@ import toast from 'react-hot-toast';
 import {now, getLocalTimeZone} from "@internationalized/date";
 import { approve } from 'thirdweb/extensions/erc721';
 import {ethers} from 'ethers';
+import { useRouter } from 'next/navigation';
 
 
 function CreateListingPage() {
-   
+   const router=useRouter();
     const [auctionImage,setAuctionImage]=React.useState<File>()
     const [uploading, setUploading] = React.useState(false);
     const {mutateAsync:sendCreateListingTransaction,isPending:listingPending}= useSendAndConfirmTransaction()
@@ -79,7 +80,10 @@ function CreateListingPage() {
               ]
           })
           await sendCreateListingTransaction(creatAuctionTransaction as PreparedTransaction,{
-              onSuccess:()=>toast.success('Auction created'),
+              onSuccess:()=>{toast.success('Auction created')
+                router.push("/")
+              }
+              ,
               onError:()=>toast.error('Error creating auction')
           })
           
